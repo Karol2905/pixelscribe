@@ -1,6 +1,6 @@
 package com.example.pixelscribe.repository;
 
-import com.example.pixelscribe.model.document.ImageEntity;
+import com.example.pixelscribe.model.entities.ImageEntity;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
