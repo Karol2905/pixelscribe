@@ -159,3 +159,11 @@ Repositorios
 - Nombre de archivo
 - Conteo de imágenes por usuario
 - Ordenamiento por fecha
+
+**Foto usada en swagger**
+<img width="920" height="1047" alt="image" src="https://github.com/user-attachments/assets/a087941d-7483-4a3d-94b6-fd7396c9f11b" />
+
+
+**Descripcion de IA **
+<img width="800" height="195" alt="image" src="https://github.com/user-attachments/assets/496f4d30-b2e5-4f25-8a13-94e2a4a7bd27" />
+
