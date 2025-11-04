@@ -1,4 +1,4 @@
-package com.example.pixelscribe.model;
+package com.example.pixelscribe.model.components.util;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
