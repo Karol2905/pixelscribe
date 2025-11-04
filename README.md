@@ -6,6 +6,8 @@ El sistema permite que los usuarios autenticados suban imágenes, las cuales son
 Toda la información se almacena de manera segura en una base de datos y se muestra luego en un **dashboard personal**.
 
 ---
+El repositorio de front se encuentra en el siguiente enlace: https://github.com/JuanLeal1105/PixelScribe_frontLosPropios.git
+---
 
 ## 👩‍💻 Equipo de Desarrollo
 
