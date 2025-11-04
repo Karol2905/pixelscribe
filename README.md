@@ -111,21 +111,49 @@ A continuación se presenta el diagrama general de componentes del sistema Pixel
 A continuación se presente el diagrama de clases del sistema PixelScribe:
 
 <img width="1417" height="1063" alt="image" src="https://github.com/user-attachments/assets/3df39434-87ef-447d-93c3-ef44a84c7398" />
+*Descripción General*
+Sistema backend que proporciona autenticación de usuarios y procesamiento inteligente de imágenes mediante IA. Los usuarios pueden registrarse, autenticarse y gestionar sus imágenes, las cuales son analizadas por el servicio Gemini de Google para generar descripciones automáticas.
 
-*Controladores*
-- AuthController: Registro y autenticación de usuarios
-- ImageController: Gestión completa de imágenes (subir, obtener, eliminar, ver estado)
+*Arquitectura del Sistema*
+🔐 Módulo de Autenticación
+- AuthController: Endpoints para registro y login de usuarios
+- MatcherService: Servicio que gestiona la lógica de autenticación y registro
+- UserRepository: Interfaz para operaciones de base de datos de usuarios
+- PasswordEncoder: Componente para encriptación segura de contraseñas
 
-*Servicios*
-- MatcherService: Maneja autenticación y registro usando UserRepository
-- ImageService: Opera con imágenes usando ImageRepository
-- GeminklxService: Procesa imágenes mediante API de Gemini (WAO Client)
+🖼️ Módulo de Gestión de Imágenes
+- ImageController: API completa para operaciones con imágenes:
+- Upload de imágenes
+- Consulta de imágenes por usuario
+- Obtención de imágenes específicas
+- Eliminación de imágenes
+- Verificación de estado de usuario
+- Validación de tipos de imagen
 
-*Entidades*
-- User: Usuario con email y password
-- Image: Imagen con metadatos y estado
+🤖 Módulo de Procesamiento con IA
+- GeminklxService: Servicio especializado que:
+- Se comunica con la API de Gemini (Google AI)
+- Analiza imágenes y genera descripciones automáticas
+- Configura parámetros de seguridad para el procesamiento
+- Extrae y formatea respuestas del modelo de IA
 
-*Repositorios*
-- UserRepository: Busca y elimina usuarios por email
-- ImageRepository: Consultas por usuario, estado, nombre de archivo y conteos
+*Entidades Principales*
+User
+- email (String)
+- password (String) - encriptado
 
+Image
+- ID único
+- filename (String)
+- description (String) - generada por IA
+- status (String) - estado del procesamiento
+- timestamps (createdAt, updatedAt)
+
+*Características Técnicas*
+Repositorios
+- UserRepository: Operaciones CRUD por email
+- ImageRepository: Búsquedas avanzadas por:
+- Usuario y estado
+- Nombre de archivo
+- Conteo de imágenes por usuario
+- Ordenamiento por fecha
