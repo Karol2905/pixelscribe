@@ -2,10 +2,10 @@ package com.example.pixelscribe.controller;
 
 import com.example.pixelscribe.model.entities.User;
 import com.example.pixelscribe.services.MatcherService;
+import com.example.pixelscribe.util.JwtTokenUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -23,6 +23,7 @@ import java.util.Map;
 public class AuthController {
 
     private final MatcherService matcherService;
+    private final JwtTokenUtil jwtTokenUtil;
 
     // ------------------ REGISTER ------------------
 
@@ -33,12 +34,9 @@ public class AuthController {
                     required = true,
                     content = @Content(
                             mediaType = "application/json",
-                            examples = {
-                                    @ExampleObject(
-                                            name = "Ejemplo de registro",
-                                            value = "{ \"email\": \"usuario@example.com\", \"password\": \"miContraseñaSegura123\" }"
-                                    )
-                            }
+                            examples = @ExampleObject(
+                                    value = "{ \"email\": \"usuario@example.com\", \"password\": \"miContraseñaSegura123\" }"
+                            )
                     )
             ),
             responses = {
@@ -48,7 +46,7 @@ public class AuthController {
                             content = @Content(
                                     mediaType = "application/json",
                                     examples = @ExampleObject(
-                                            value = "{ \"userId\": \"6728c54a99f3b12f84e1a2c3\", \"email\": \"usuario@example.com\" }"
+                                            value = "{ \"userId\": \"6728c54a99f3b12f84e1a2c3\", \"email\": \"usuario@example.com\", \"token\": \"<jwt_token>\" }"
                                     )
                             )
                     ),
@@ -65,14 +63,20 @@ public class AuthController {
             }
     )
     @PostMapping("/register")
-    public ResponseEntity<?> register(@org.springframework.web.bind.annotation.RequestBody Map<String, String> body) {
+    public ResponseEntity<?> register(@RequestBody Map<String, String> body) {
         try {
             String email = body.get("email");
             String password = body.get("password");
+
             User newUser = matcherService.register(email, password);
+
+            // Generar token JWT con el email
+            String token = jwtTokenUtil.generateToken(newUser.getEmail());
+
             return ResponseEntity.ok(Map.of(
                     "userId", newUser.getUserId(),
-                    "email", newUser.getEmail()
+                    "email", newUser.getEmail(),
+                    "token", token
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
@@ -83,17 +87,14 @@ public class AuthController {
 
     @Operation(
             summary = "Iniciar sesión de usuario",
-            description = "Autentica a un usuario existente y devuelve su información básica.",
+            description = "Autentica a un usuario existente y devuelve su información básica junto al token JWT.",
             requestBody = @RequestBody(
                     required = true,
                     content = @Content(
                             mediaType = "application/json",
-                            examples = {
-                                    @ExampleObject(
-                                            name = "Ejemplo de login",
-                                            value = "{ \"email\": \"usuario@example.com\", \"password\": \"miContraseñaSegura123\" }"
-                                    )
-                            }
+                            examples = @ExampleObject(
+                                    value = "{ \"email\": \"usuario@example.com\", \"password\": \"miContraseñaSegura123\" }"
+                            )
                     )
             ),
             responses = {
@@ -103,7 +104,7 @@ public class AuthController {
                             content = @Content(
                                     mediaType = "application/json",
                                     examples = @ExampleObject(
-                                            value = "{ \"userId\": \"6728c54a99f3b12f84e1a2c3\", \"email\": \"usuario@example.com\" }"
+                                            value = "{ \"userId\": \"6728c54a99f3b12f84e1a2c3\", \"email\": \"usuario@example.com\", \"token\": \"<jwt_token>\" }"
                                     )
                             )
                     ),
@@ -120,14 +121,20 @@ public class AuthController {
             }
     )
     @PostMapping("/login")
-    public ResponseEntity<?> login(@org.springframework.web.bind.annotation.RequestBody Map<String, String> body) {
+    public ResponseEntity<?> login(@RequestBody Map<String, String> body) {
         try {
             String email = body.get("email");
             String password = body.get("password");
+
             User user = matcherService.authenticate(email, password);
+
+            // Generar token JWT con el email del usuario autenticado
+            String token = jwtTokenUtil.generateToken(user.getEmail());
+
             return ResponseEntity.ok(Map.of(
                     "userId", user.getUserId(),
-                    "email", user.getEmail()
+                    "email", user.getEmail(),
+                    "token", token
             ));
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
