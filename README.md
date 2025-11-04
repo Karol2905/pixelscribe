@@ -34,16 +34,14 @@ PixelScribe ofrece un flujo simple y robusto:
 
 ## 🧱 Arquitectura General
 
-🧱 Arquitectura del Sistema
-
-El siguiente diagrama representa la arquitectura de alto nivel del proyecto PixelScribe, organizada bajo un modelo cliente–servidor desacoplado:
+El siguiente diagrama representa la arquitectura de alto nivel del proyecto PixelScribe, organizada bajo un modelo cliente–servidor desacoplado, donde el frontend, el backend y la base de datos operan de forma independiente pero conectada mediante interfaces bien definidas.
 
 🔹 Descripción de Componentes
 🖥️ Frontend – PixelScribe (React + TypeScript)
 
 Desarrollado con React y TypeScript, este módulo proporciona la interfaz gráfica del sistema.
 
-Se comunica con el backend a través de peticiones HTTP REST utilizando Axios o Fetch.
+Se comunica con el backend a través de peticiones HTTP REST utilizando Axios o Fetch API.
 
 Implementa autenticación mediante JWT, almacenando el token en el localStorage.
 
@@ -57,7 +55,7 @@ Visualización del historial de descripciones generadas por IA.
 
 ⚙️ Backend – PixelScribe (Spring Boot)
 
-Implementado con Java 17 y Spring Boot 3, expone una API REST segura y escalable.
+Implementado con Java 17 y Spring Boot 3, este módulo expone una API REST segura y escalable.
 
 Administra las operaciones principales de la aplicación:
 
@@ -69,27 +67,28 @@ Persistencia y recuperación de datos desde MongoDB.
 
 Herramientas y librerías clave:
 
-Maven – gestión de dependencias.
+🧩 Maven – gestión de dependencias.
 
-Swagger – documentación interactiva del API.
+📘 Swagger – documentación interactiva del API.
 
-JaCoCo – cobertura de pruebas.
+🧮 JaCoCo – medición de cobertura de pruebas.
 
-SonarQube – análisis estático de código.
+🧠 SonarQube – análisis estático de calidad del código.
 
-Docker – empaquetamiento y despliegue.
+🐳 Docker – empaquetamiento y despliegue del servicio.
 
 🗄️ Base de Datos – MongoDB (Atlas o Local)
 
 Repositorio NoSQL donde se almacenan los datos de usuarios e imágenes procesadas.
+Utiliza un modelo flexible que facilita la gestión de documentos tipo JSON.
 
-Modelo flexible que facilita la gestión de documentos tipo JSON:
+Colecciones principales:
 
 User: credenciales y correo electrónico.
 
 ImageRecord: metadatos e información generada por IA.
 
-Conexión establecida mediante el driver oficial de Spring Data MongoDB.
+La conexión se realiza mediante Spring Data MongoDB, lo que permite operaciones CRUD simples y seguras.
 
 🔁 Flujo General de Comunicación
 
@@ -97,9 +96,12 @@ El usuario interactúa con el frontend para registrarse, autenticarse o subir im
 
 El backend recibe las solicitudes, valida el token JWT y procesa la lógica correspondiente.
 
-Las operaciones de lectura/escritura se gestionan mediante MongoDB.
+Las operaciones de lectura y escritura se gestionan mediante MongoDB.
 
-El backend retorna respuestas JSON al frontend, que las representa de forma visual.
+El backend retorna respuestas JSON al frontend, que las presenta en la interfaz de usuario.
 
-<img width="1400" height="1326" alt="Blank diagram" src="https://github.com/user-attachments/assets/95c0e84f-cd00-4762-8b0a-9560253c94ac" />
+🧩 Diagrama de Componentes
 
+A continuación se presenta el diagrama general de componentes del sistema PixelScribe:
+
+<p align="center"> <img width="900" alt="Arquitectura General de PixelScribe" src="https://github.com/user-attachments/assets/95c0e84f-cd00-4762-8b0a-9560253c94ac" /> </p>
