@@ -36,7 +36,7 @@ PixelScribe ofrece un flujo simple y robusto:
 
 El siguiente diagrama representa la arquitectura de alto nivel del proyecto PixelScribe, organizada bajo un modelo cliente–servidor desacoplado, donde el frontend, el backend y la base de datos operan de forma independiente pero conectada mediante interfaces bien definidas.
 
-🔹 Descripción de Componentes
+- **Descripción de Componentes**
 🖥️ Frontend – PixelScribe (React + TypeScript)
 
 Desarrollado con React y TypeScript, este módulo proporciona la interfaz gráfica del sistema.
@@ -53,7 +53,7 @@ Subida de imágenes.
 
 Visualización del historial de descripciones generadas por IA.
 
-⚙️ Backend – PixelScribe (Spring Boot)
+-**Backend – PixelScribe (Spring Boot)**
 
 Implementado con Java 17 y Spring Boot 3, este módulo expone una API REST segura y escalable.
 
@@ -100,7 +100,7 @@ Las operaciones de lectura y escritura se gestionan mediante MongoDB.
 
 El backend retorna respuestas JSON al frontend, que las presenta en la interfaz de usuario.
 
-🧩 Diagrama de Componentes
+**Diagrama de Componentes**
 
 A continuación se presenta el diagrama general de componentes del sistema PixelScribe:
 
