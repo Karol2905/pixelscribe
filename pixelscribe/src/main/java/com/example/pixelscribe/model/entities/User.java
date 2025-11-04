@@ -1,10 +1,12 @@
 package com.example.pixelscribe.model.entities;
 
-
-
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Getter
+@Setter
 @Document(collection = "Users")
 public class User {
 
@@ -18,31 +20,6 @@ public class User {
 
     public User(String email, String password) {
         this.email = email;
-        this.password = password;
-    }
-
-    // Getters y Setters
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
         this.password = password;
     }
 }

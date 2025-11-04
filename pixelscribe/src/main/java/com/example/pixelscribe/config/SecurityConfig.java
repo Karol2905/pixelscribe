@@ -1,7 +1,5 @@
 package com.example.pixelscribe.config;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -38,9 +36,10 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authz -> authz
                         // ✅ Endpoints públicos
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/api/images/**").permitAll() // 🔥 TEMPORAL - para probar
 
-                        // ✅ Endpoints protegidos (subida de imagen, dashboard, etc.)
+                        // ✅ Endpoints protegidos
                         .anyRequest().authenticated()
                 )
                 // ✅ Filtro JWT antes del UsernamePasswordAuthenticationFilter
