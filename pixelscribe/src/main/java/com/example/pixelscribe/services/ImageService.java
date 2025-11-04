@@ -1,6 +1,6 @@
 package com.example.pixelscribe.services;
 
-import com.example.pixelscribe.model.document.ImageEntity;
+import com.example.pixelscribe.model.entities.ImageEntity;
 import com.example.pixelscribe.repository.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
