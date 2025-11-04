@@ -105,3 +105,10 @@ El backend retorna respuestas JSON al frontend, que las presenta en la interfaz 
 A continuación se presenta el diagrama general de componentes del sistema PixelScribe:
 
 <p align="center"> <img width="900" alt="Arquitectura General de PixelScribe" src="https://github.com/user-attachments/assets/95c0e84f-cd00-4762-8b0a-9560253c94ac" /> </p>
+
+**Diagrama de Clases**
+
+A continuación se presente el diagrama de clases del sistema PixelScribe:
+
+<img width="1417" height="1063" alt="image" src="https://github.com/user-attachments/assets/3df39434-87ef-447d-93c3-ef44a84c7398" />
+
