@@ -105,10 +105,10 @@
 
 	<build>
 
-		<sourceDirectory>src/main/java</sourceDirectory>
+		<sourceDirectory>pixelscribe/src/main/java</sourceDirectory>
 		<resources>
 			<resource>
-				<directory>src/main/resources</directory>
+				<directory>pixelscribe/src/main/resources</directory>
 			</resource>
 		</resources>
 
