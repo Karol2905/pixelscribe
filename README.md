@@ -112,3 +112,20 @@ A continuación se presente el diagrama de clases del sistema PixelScribe:
 
 <img width="1417" height="1063" alt="image" src="https://github.com/user-attachments/assets/3df39434-87ef-447d-93c3-ef44a84c7398" />
 
+*Controladores*
+- AuthController: Registro y autenticación de usuarios
+- ImageController: Gestión completa de imágenes (subir, obtener, eliminar, ver estado)
+
+*Servicios*
+- MatcherService: Maneja autenticación y registro usando UserRepository
+- ImageService: Opera con imágenes usando ImageRepository
+- GeminklxService: Procesa imágenes mediante API de Gemini (WAO Client)
+
+*Entidades*
+- User: Usuario con email y password
+- Image: Imagen con metadatos y estado
+
+*Repositorios*
+- UserRepository: Busca y elimina usuarios por email
+- ImageRepository: Consultas por usuario, estado, nombre de archivo y conteos
+
