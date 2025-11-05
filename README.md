@@ -164,6 +164,19 @@ Repositorios
 <img width="920" height="1047" alt="image" src="https://github.com/user-attachments/assets/a087941d-7483-4a3d-94b6-fd7396c9f11b" />
 
 
-**Descripcion de IA **
+**Descripcion de IA**
+
 <img width="800" height="195" alt="image" src="https://github.com/user-attachments/assets/496f4d30-b2e5-4f25-8a13-94e2a4a7bd27" />
 
+**Imagenes de front**
+-Loggin
+<img width="1362" height="661" alt="image" src="https://github.com/user-attachments/assets/8e3d527f-fba5-49e9-9a66-fe76c88af34f" />
+-Dashboard
+<img width="1913" height="837" alt="image" src="https://github.com/user-attachments/assets/0c8f23c3-40db-4a94-8ed6-ff5b4df14276" />
+
+**Usuario para usar**
+-karol@gmail.com
+-password:123
+
+
+La descripcion con IA se genera correctamente, y da parcialmente la imagen usada en el get
